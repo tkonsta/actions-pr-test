@@ -1,0 +1,14 @@
+name: pr-slack
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, reopened, ready_for_review]
+  workflow_call:
+
+jobs:
+  slack-notification:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest    
+    steps:
+      - run: echo "Workflow has been run"
